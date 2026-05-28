@@ -14,7 +14,7 @@ function waitForTableau(callback, retries = 20) {
   } else if (retries > 0) {
     setTimeout(() => waitForTableau(callback, retries - 1), 100);
   } else {
-    console.error("[back-nav] Tableau API not available after 2s — is this loaded inside Tableau?");
+    console.error("[back-nav] Tableau API not available after 2s");
     label.textContent = "API timeout";
     btn.disabled = false;
   }
@@ -25,25 +25,20 @@ waitForTableau(() => {
   tableau.extensions.initializeAsync().then(async () => {
 
     const workbook = tableau.extensions.workbook;
-
-    // Debug: list all parameters in the workbook
-    const allParams = await workbook.getParametersAsync();
-    const paramNames = allParams.map(p => p.name).join(", ");
-    console.log("[back-nav] Parameters found:", paramNames);
-
-    // Show param names on button for debug
-    label.textContent = paramNames || "NO PARAMS";
-    btn.disabled = false;
+    console.log("[back-nav] Initialised. Workbook:", workbook);
 
     sourceParam = await workbook.findParameterAsync(PARAM_NAME);
 
     if (!sourceParam) {
-      console.error(`[back-nav] "${PARAM_NAME}" not found. Found: ${paramNames}`);
+      console.error(`[back-nav] Parameter "${PARAM_NAME}" not found.`);
       label.textContent = "Param missing";
+      btn.disabled = false;
       return;
     }
 
-    label.textContent = "Back v6";
+    console.log("[back-nav] Parameter found. Value:", sourceParam.currentValue.value);
+    label.textContent = "Back v7";
+    btn.disabled = false;
     updateTitle(sourceParam.currentValue.value);
 
     sourceParam.addEventListener(
