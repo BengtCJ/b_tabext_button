@@ -27,7 +27,8 @@ waitForTableau(() => {
     const workbook = tableau.extensions.workbook;
     console.log("[back-nav] Initialised. Workbook:", workbook);
 
-    sourceParam = await workbook.findParameterAsync(PARAM_NAME);
+    const params = await workbook.getParametersAsync();
+    sourceParam = params.find(p => p.name === PARAM_NAME) ?? null;
 
     if (!sourceParam) {
       console.error(`[back-nav] Parameter "${PARAM_NAME}" not found.`);
