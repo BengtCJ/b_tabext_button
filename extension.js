@@ -43,7 +43,7 @@ waitForTableau(() => {
       return;
     }
 
-    label.textContent = "Back";
+    label.textContent = "Back v6";
     updateTitle(sourceParam.currentValue.value);
 
     sourceParam.addEventListener(
