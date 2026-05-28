@@ -5,23 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Back Nav Button</title>
   <style>
-    * {
+    html, body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
+      width: 100%;
+      height: 100%;
       overflow: hidden;
+      background: transparent;
     }
 
     body {
-      background: transparent;
-      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
       font-family: Arial, sans-serif;
     }
 
@@ -31,24 +27,18 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      background: transparent;
+      background: #ffffff;
       border: none;
       border-radius: 10px;
-      width: min(88px, 88vw, 88vh);
-      height: min(88px, 88vw, 88vh);
+      width: min(90px, 90vw, 90vh);
+      height: min(90px, 90vw, 90vh);
       cursor: pointer;
       box-shadow: 0 1px 4px rgba(0,0,0,0.15);
       transition: opacity 0.15s ease;
     }
 
-    #back-btn:hover {
-      opacity: 0.85;
-    }
-
-    #back-btn:active {
-      opacity: 0.65;
-    }
-
+    #back-btn:hover  { opacity: 0.85; }
+    #back-btn:active { opacity: 0.65; }
     #back-btn:disabled {
       opacity: 0.4;
       cursor: not-allowed;
@@ -77,10 +67,6 @@
       color: #1a1a1a;
       text-transform: uppercase;
     }
-
-    #status {
-      display: none;
-    }
   </style>
 </head>
 <body>
@@ -88,16 +74,14 @@
   <button id="back-btn" disabled title="Loading...">
     <div class="icon-circle">
       <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="13" y1="8" x2="3" y2="8" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        <polyline points="7,4 3,8 7,12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="4" y1="4" x2="12" y2="12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <line x1="12" y1="4" x2="4" y2="12" stroke="white" stroke-width="2" stroke-linecap="round"/>
       </svg>
     </div>
-    <span class="btn-label">Back</span>
+    <span class="btn-label">Close</span>
   </button>
 
-  <span id="status"></span>
-
   <script src="https://extensions.cdn.tableau.com/tableau.extensions.1.latest.js"></script>
-  <script src="extension.js"></script>
+  <script defer src="extension.js"></script>
 </body>
 </html>
