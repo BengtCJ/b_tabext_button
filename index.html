@@ -11,8 +11,13 @@
       box-sizing: border-box;
     }
 
+    html {
+      overflow: hidden;
+    }
+
     body {
       background: transparent;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -26,11 +31,11 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      background: #ffffff;
+      background: transparent;
       border: none;
       border-radius: 10px;
-      width: 100px;
-      height: 100px;
+      width: min(88px, 88vw, 88vh);
+      height: min(88px, 88vw, 88vh);
       cursor: pointer;
       box-shadow: 0 1px 4px rgba(0,0,0,0.15);
       transition: opacity 0.15s ease;
@@ -83,11 +88,11 @@
   <button id="back-btn" disabled title="Loading...">
     <div class="icon-circle">
       <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="4" y1="4" x2="12" y2="12" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        <line x1="12" y1="4" x2="4" y2="12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <line x1="13" y1="8" x2="3" y2="8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <polyline points="7,4 3,8 7,12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <span class="btn-label">Close</span>
+    <span class="btn-label">Back</span>
   </button>
 
   <span id="status"></span>
